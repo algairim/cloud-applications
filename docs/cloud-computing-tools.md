@@ -83,3 +83,7 @@ Try deploying same application topology from the composer:
 ![brooklyn application](images/brooklyn-yaml-editor.png)
 
 ![brooklyn application](images/brooklyn-composer.png)
+
+See commercial version with a rich collection of features [[ref](https://docs.cloudsoft.io)], which helps to achieve
+a high level of resilience, compliance and supports TOSCA standard
+[[ref](https://docs.oasis-open.org/tosca/TOSCA-Simple-Profile-YAML/v1.3/os/TOSCA-Simple-Profile-YAML-v1.3-os.html)].
