@@ -119,6 +119,6 @@ services. Methods concerning how to address these issues have been investigated
 ## See Also
 
 * [_IDEAL_ Cloud Application Properties](docs/ideal-cloud-application-properties.md)
-* [NIST Perspective (placeholder)]()
-* [Cloud Design Patterns](docs/cloud-design-patterns.md)
 * [Cloud Computing Mechanisms](docs/cloud-computing-mechanisms.md)
+* [Cloud Design Patterns](docs/cloud-design-patterns.md)
+* [NIST Perspective](docs/nist-perspective.md)
