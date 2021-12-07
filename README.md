@@ -122,3 +122,4 @@ services. Methods concerning how to address these issues have been investigated
 * [Cloud Computing Mechanisms](docs/cloud-computing-mechanisms.md)
 * [Cloud Design Patterns](docs/cloud-design-patterns.md)
 * [NIST Perspective](docs/nist-perspective.md)
+* [Cloud Computing Tools](docs/cloud-computing-tools.md)
