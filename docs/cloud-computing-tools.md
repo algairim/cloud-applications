@@ -12,6 +12,7 @@ Blueprints can be added via web console or CLI.
 Install Brooklyn CLI and start Brooklyn controller.
 
 Create `my-location.brooklyn.yaml`:
+
 ```yaml
 brooklyn.catalog:
   id: my-aws-eu-west-1-location
@@ -27,11 +28,14 @@ brooklyn.catalog:
       user: OS_USER # replace
       imageId: AWS_AMI_ID # replace
 ```
-Add location to the Brooklyn catalog:
+
+Add location to the Brooklyn catalog with the CLI:
 ```shell
-br catalog add my-location.brooklyn.yaml
+$ br catalog add my-location.brooklyn.yaml
 ```
+
 Create `my-application.brooklyn.yaml`:
+
 ```yaml
 name: My Cloud Application
 location: my-aws-eu-west-1-location
@@ -41,10 +45,13 @@ services:
   brooklyn.config:
     wars.root: https://repo1.maven.org/maven2/org/apache/brooklyn/example/brooklyn-example-hello-world-sql-webapp/0.12.0/brooklyn-example-hello-world-sql-webapp-0.12.0.war
 ```
-Deploy application:
+
+Deploy application with the CLI:
+
 ```shell
-br catalog add my-location.brooklyn.yaml
+$ br catalog add my-location.brooklyn.yaml
 ```
+
 Login into Brooklyn web console and inspect application deployment progress:
 
 ![brooklyn application](images/brooklyn-deployment-progress.png)
@@ -64,11 +71,11 @@ Open link to see the Brooklyn sample web application:
 Inspect with the CLI:
 
 ```shell
-br locations
+$ br locations
 ```
 
 ```shell
-br applications
+$ br applications
 ```
 
 Try deploying same application topology from the composer:
