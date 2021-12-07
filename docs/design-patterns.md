@@ -1,10 +1,10 @@
-## Design Patterns
+# Design Patterns
 
 Phases of the pattern-based design method for cloud applications and patterns considered during each phase:
 
 ![application of cloud computing patterns](images/application_of_cloud_computing_patterns.png)
 
-### Amazon Web Services
+## Amazon Web Services
 
 The cloud design patterns for Amazon Web Services describe common designs for applications running on the Amazon cloud
 and are claimed to be obtained from existing applications running at this cloud provider.
@@ -76,7 +76,7 @@ Network:
 * [WAF Proxy Pattern (Effective Use of a Costly Web Application Firewalls)](http://en.clouddesignpattern.org/index.php/CDP:WAF_Proxy_Pattern)
 * [CloudHub Pattern (Setting Up VPN Sites)](http://en.clouddesignpattern.org/index.php/CDP:CloudHub_Pattern)
 
-### Microsoft Azure
+## Microsoft Azure
 
 The cloud design patterns for Microsoft Azure provide a set of patterns for cloud applications considering distributed
 systems in general, cloud applications, and Microsoft Azure. While these patterns clearly focus on Azure, the authors
@@ -107,7 +107,7 @@ claim that presented concepts are generally applicable.
 * [Throttling Pattern](https://docs.microsoft.com/en-us/previous-versions/msp-n-p/dn589798(v=pandp.10))
 * [Valet Key Pattern](https://docs.microsoft.com/en-us/previous-versions/msp-n-p/dn568102(v=pandp.10))
 
-### Bill Wilder (O'Reilly)
+## Bill Wilder (O'Reilly)
 
 The cloud architecture patterns that are considered to be generally applicable to cloud computing applications. Their
 exemplary use in a photo-sharing application throughout the book considers _Windows Azure_ as the development platform.
@@ -129,7 +129,7 @@ Other cloud providers are not considered.
 * CDN Pattern
 * Multisite Deployment Pattern
 
-### CloudPatterns.org
+## CloudPatterns.org
 
 The focus of the patterns of cloudpatterns.org on cloud-building technologies, concepts, and architectures motivates
 their mapping to the cloud computing patterns, which focus on building applications for the cloud – not the cloud itself.
