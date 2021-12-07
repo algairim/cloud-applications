@@ -1,4 +1,4 @@
-## _IDEAL_ Cloud Application Properties [[ref](https://d-nb.info/1079525432/34)]
+## _IDEAL_ Cloud Application Properties
 
 * _**I**solated State_: state information (state of the interaction with an application and the data handled by the
   application) is handled by a minimal number of application components and preferably in data storage functionality
@@ -22,7 +22,7 @@
 * _**L**oose Coupling_: the dependencies among application components are reduced to ease addition and removal in the
   scope of elasticity management and <span style="color:blue">***resiliency***</span>.
 
-Mapping of _cloud environment requirements_ to cloud application properties:
+Mapping of _cloud environment requirements_ to cloud application properties [[ref](https://d-nb.info/1079525432/34)]:
 
 ![cloud environment requirements](images/ideal_to_cloud_environment_requirements.png)
 
