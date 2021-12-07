@@ -1,4 +1,4 @@
-# Design Patterns
+# Cloud Design Patterns
 
 Phases of the pattern-based design method for cloud applications and patterns considered during each phase [[ref](https://d-nb.info/1079525432/34)]:
 
