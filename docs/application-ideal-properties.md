@@ -1,4 +1,4 @@
-##_IDEAL_ Cloud Application Properties
+## _IDEAL_ Cloud Application Properties [[ref](https://d-nb.info/1079525432/34)]
 
 * _**I**solated State_: state information (state of the interaction with an application and the data handled by the
   application) is handled by a minimal number of application components and preferably in data storage functionality
