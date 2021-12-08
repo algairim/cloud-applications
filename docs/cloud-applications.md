@@ -1,3 +1,3 @@
-# Collection of Cloud Applications
+# Cloud Applications to Try
 
-*IN PROGRESS...*
+* *IN PROGRESS...*
