@@ -40,16 +40,27 @@ Create `my-application.brooklyn.yaml`:
 name: My Cloud Application
 location: my-aws-eu-west-1-location
 services:
+# MySQL node
+- type: org.apache.brooklyn.entity.database.mysql.MySqlNode
+  id: mysql-node
+  name: My Database
+  brooklyn.config:
+    datastore.creation.script.url: https://raw.githubusercontent.com/apache/brooklyn-library/master/examples/simple-web-cluster/src/main/resources/visitors-creation-script.sql
+  pre.install.command: sudo apt-get install -y libncurses5 # Might be missing on some VMs
+# Tomcat node
 - type: org.apache.brooklyn.entity.webapp.tomcat.TomcatServer
-  name: my-tomcat-server
+  name: My Tomcat Server
+  id: tomcat-node
   brooklyn.config:
     wars.root: https://repo1.maven.org/maven2/org/apache/brooklyn/example/brooklyn-example-hello-world-sql-webapp/0.12.0/brooklyn-example-hello-world-sql-webapp-0.12.0.war
+    java.sysprops:
+      brooklyn.example.db.url: $brooklyn:formatString("jdbc:%s%s?user=%s&password=%s", $brooklyn:component("mysql-node").attributeWhenReady("datastore.url"), "visitors", "brooklyn", "br00k11n")
 ```
 
 Deploy application with the CLI:
 
 ```shell
-$ br catalog add my-location.brooklyn.yaml
+$ br deploy my-application.brooklyn.yaml
 ```
 
 Login into Brooklyn web console and inspect application deployment progress:
