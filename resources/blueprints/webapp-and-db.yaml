@@ -1,0 +1,69 @@
+
+name: Web App + DB
+
+# ----------------------------------------------------------------------------------------------------------------------
+# Application location
+location: ubuntu.ireland
+
+# ----------------------------------------------------------------------------------------------------------------------
+# Application config
+brooklyn.config:
+  db-name: visitors
+  db-user: brooklyn
+  db-pass: br00k11n
+  db-script: https://raw.githubusercontent.com/apache/brooklyn-library/master/examples/simple-web-cluster/src/main/resources/visitors-creation-script.sql
+  mysql-tar: https://downloads.mysql.com/archives/get/p/23/file/mysql-5.6.26-linux-glibc2.5-x86_64.tar.gz
+  web-app: https://repo1.maven.org/maven2/org/apache/brooklyn/example/brooklyn-example-hello-world-sql-webapp/0.12.0/brooklyn-example-hello-world-sql-webapp-0.12.0.war
+
+# ----------------------------------------------------------------------------------------------------------------------
+# Application nodes
+services:
+
+  # --------------------------------------------------------------------------------------------------------------------
+  # DB
+  - type: org.apache.brooklyn.entity.database.mysql.MySqlNode
+    id: db
+    name: My DB (MySQL)
+
+    # ------------------------------------------------------------------------------------------------------------------
+    # DB config
+    brooklyn.config:
+      download.url: $brooklyn:config("mysql-tar")
+      datastore.creation.script.url: $brooklyn:config("db-script")
+      shell.env:
+        DB_USER: $brooklyn:config("db-user")
+        RUN_DIR: $brooklyn:attributeWhenReady("run.dir")
+        MYSQL_BIN: $brooklyn:formatString("%s/bin/mysql --defaults-file=mymysql.cnf",$brooklyn:attributeWhenReady("expandedinstall.dir"))
+
+    # ------------------------------------------------------------------------------------------------------------------
+    # DB commands
+    pre.install.command: |
+      sudo apt-get install -y libncurses5
+
+    # ------------------------------------------------------------------------------------------------------------------
+    # DB miscellaneous features
+    brooklyn.initializers:
+      - type: org.apache.brooklyn.core.effector.ssh.SshCommandEffector
+        brooklyn.config:
+          name: mysql-expression
+          description: "Run MySQL expression on this DB, 'mysql -e <mysql-expression>'"
+          command: |
+            cd $RUN_DIR
+            $MYSQL_BIN -e "$MYSQL_EXPRESSION"
+          parameters:
+            MYSQL_EXPRESSION:
+              description: MySQL expression
+              defaultValue: ''
+
+  # --------------------------------------------------------------------------------------------------------------------
+  # TOMCAT
+  - type: org.apache.brooklyn.entity.webapp.tomcat.TomcatServer
+    id: app
+    name: Web App (Tomcat Server)
+    brooklyn.config:
+      wars.root: $brooklyn:config("web-app")
+      java.sysprops:
+        brooklyn.example.db.url: >-
+          $brooklyn:formatString("jdbc:%s%s?user=%s&password=%s",
+          $brooklyn:component("db").attributeWhenReady("datastore.url"), $brooklyn:config("db-name"),
+          $brooklyn:config("db-user"), $brooklyn:config("db-pass"))
