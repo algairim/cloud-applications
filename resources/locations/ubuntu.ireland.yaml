@@ -1,0 +1,14 @@
+brooklyn.catalog:
+  id: 'ubuntu.ireland'
+  name: 'ubuntu.ireland'
+  itemType: location
+  item:
+    type: jclouds:aws-ec2
+    brooklyn.config:
+      region: eu-west-1
+      identity: 00112233445566778899 # Replace with a valid AWS identity
+      credential: 00112233445566778899AABBCCDDEEFFGGHHIIJJ # Replace with a valid AWS credential
+      installDevUrandom: true
+      loginUser: ubuntu
+      imageId: eu-west-1/ami-0aef57767f5404a3c
+      custom.machine.namer.machine: my-brooklyn-item-${entity.id}-${entity.application.id}
