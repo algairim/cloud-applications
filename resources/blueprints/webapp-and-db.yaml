@@ -1,11 +1,9 @@
 
 name: Web App + DB
 
-# ----------------------------------------------------------------------------------------------------------------------
 # Application location
 location: ubuntu.ireland
 
-# ----------------------------------------------------------------------------------------------------------------------
 # Application config
 brooklyn.config:
   db-name: visitors
@@ -15,17 +13,14 @@ brooklyn.config:
   mysql-tar: https://downloads.mysql.com/archives/get/p/23/file/mysql-5.6.26-linux-glibc2.5-x86_64.tar.gz
   web-app: https://repo1.maven.org/maven2/org/apache/brooklyn/example/brooklyn-example-hello-world-sql-webapp/0.12.0/brooklyn-example-hello-world-sql-webapp-0.12.0.war
 
-# ----------------------------------------------------------------------------------------------------------------------
 # Application nodes
 services:
 
-  # --------------------------------------------------------------------------------------------------------------------
-  # DB
+  # DB node
   - type: org.apache.brooklyn.entity.database.mysql.MySqlNode
     id: db
-    name: My DB (MySQL)
+    name: My DB
 
-    # ------------------------------------------------------------------------------------------------------------------
     # DB config
     brooklyn.config:
       download.url: $brooklyn:config("mysql-tar")
@@ -35,12 +30,10 @@ services:
         RUN_DIR: $brooklyn:attributeWhenReady("run.dir")
         MYSQL_BIN: $brooklyn:formatString("%s/bin/mysql --defaults-file=mymysql.cnf",$brooklyn:attributeWhenReady("expandedinstall.dir"))
 
-    # ------------------------------------------------------------------------------------------------------------------
     # DB commands
     pre.install.command: |
       sudo apt-get install -y libncurses5
 
-    # ------------------------------------------------------------------------------------------------------------------
     # DB miscellaneous features
     brooklyn.initializers:
       - type: org.apache.brooklyn.core.effector.ssh.SshCommandEffector
@@ -55,11 +48,10 @@ services:
               description: MySQL expression
               defaultValue: ''
 
-  # --------------------------------------------------------------------------------------------------------------------
   # TOMCAT
   - type: org.apache.brooklyn.entity.webapp.tomcat.TomcatServer
     id: app
-    name: Web App (Tomcat Server)
+    name: My Web App
     brooklyn.config:
       wars.root: $brooklyn:config("web-app")
       java.sysprops:
