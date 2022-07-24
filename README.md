@@ -27,7 +27,7 @@ change its setup, deployment, and management and leave application architecture 
 Results are company-internal infrastructure-as-a-service offerings that can provision virtual servers in a fast and
 efficient manner via a self-service portal [[ref](http://www.asecib.ase.ro/cc/carti/Cloud%20Computing%20Patterns%20[2014].pdf)].
 
-## What is the Industry Problem?
+## What is the Industry Problem
 
 The cloud provider market has been and continues to be extremely diversified, as little standardization among providers
 exists. Each provider uses individualized terminology, functionality, access interfaces, service levels, and pricing.
